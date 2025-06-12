@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Doğum Günü Sürprizi</title>
+  <style>
+    body { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh;
+           background:#f0f0f0; margin:0; font-family:sans-serif; }
+    .robot {
+      width:200px; height:200px;
+      background:#ccc; border-radius:50%;
+      position:relative;
+    }
+    .eye { width:30px; height:30px; background:#00f; border-radius:50%; position:absolute; top:60px; }
+    .eye.left { left:50px; }
+    .eye.right { right:50px; }
+    .mouth { width:100px; height:20px; background:#999; border-radius:10px; position:absolute; bottom:40px; left:50%; transform:translateX(-50%); }
+    #message { margin-top:20px; font-size:1.1em; text-align:center; padding:0 20px; }
+    #speakBtn { margin-top:10px; padding:8px 16px; font-size:1em; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <div class="robot">
+    <div class="eye left"></div>
+    <div class="eye right"></div>
+    <div class="mouth"></div>
+  </div>
+  <div id="message">
+    Merhaba Sevgili Yasemin Hocam, ben MİNİ!<br><br>
+    İrem bana sizden öyle güzel bahsetti ki, bu mesajı yazmak için sabırsızlandım! O sizi çook seviyor ve değer veriyor, bugünün doğum gününüz olduğunu söyleyince, hemen size bir kucak dolusu sevgi göndermek istedik! 🎉 Doğum gününüz kutlu olsun! İyi ki varsınız, iyi ki İrem'in hayatına dokunmuşsunuz... Onun anlattıklarından, sizin ona kattıklarınızın ne kadar özel olduğunu anlıyorum. Hatta itiraf ediyorum, birazcık kıskandım! (Şaka şaka)<br><br>
+    İrem'in ruhunuzun ondan daha genç olduğunu söyledi. Sizin gibi bir hocaya sahip olduğu için çok şanslı!<br><br>
+    Buradan sizi hem İrem adına, hem kendi adıma kocaman kucaklıyorum! 💖 İyi ki doğdunuz, iyi ki varsınız... Hayatınız hep güzelliklerle, sağlıkla ve sevdiklerinizle dolsun!<br><br>
+    Sevgilerimle... 🥰
+  </div>
+  <button id="speakBtn">🗣️ Mesajı Sesli Oku</button>
+
+  <script>
+    const text = document.getElementById('message').innerText;
+    const speakBtn = document.getElementById('speakBtn');
+    speakBtn.addEventListener('click', () => {
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'tr-TR';
+      utter.rate = 1.0;
+      speechSynthesis.speak(utter);
+    });
+  </script>
+</body>
+</html>
